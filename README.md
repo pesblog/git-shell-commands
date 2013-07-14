@@ -7,7 +7,7 @@ Commands of git-shell for simple
 
 ### Create user
 
-    useradd git
+    # useradd git
 
 ### Add authorizetion_keys
 
