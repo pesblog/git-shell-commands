@@ -9,13 +9,13 @@ Commands of git-shell for simple
 
     # useradd git
 
-### Add authorizetion_keys
+### Add authorized_keys
 
     # mkdir /home/git/.ssh
-    # vi /home/git/.ssh/authorizetion_keys
+    # vi /home/git/.ssh/authorized_keys
     # cd /home/git/
-    # chown git .ssh .ssh/authorizetion_keys
-    # chgrp git .ssh .ssh/authorizetion_keys
+    # chown git .ssh .ssh/authorized_keys
+    # chgrp git .ssh .ssh/authorized_keys
     # chmod 700 .ssh
     # chmod 600 .ssh/autoraizetion_keys
     
