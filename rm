@@ -1,0 +1,28 @@
+#!/bin/sh
+
+if [ $# -ne 1 ];then
+  echo "usage: rm <name>"
+  exit 1
+fi
+
+REPO_DIR=$HOME"/git/"
+DEL_REPO=$1
+[[ ! $REPO_DIR$DEL_REPO =~ \.git$ ]] && DEL_REPO=$DEL_REPO".git"
+if [[ ! -d $REPO_DIR$DEL_REPO ]];then
+  echo "$DEL_REPO is not exists"
+  exit 1
+fi
+
+REPO_BAK_DIR=$HOME"/git.bak/"
+TODAY=`date "+-%Y-%m-%d"`
+if [[ -d $REPO_BAK_DIR$DEL_REPO$TODAY ]];then
+  i=1
+  while [ -d $REPO_BAK_DIR$DEL_REPO$TODAY"-"$i ]
+  do
+    i=`expr "$i" + 1`
+  done
+  TODAY=$TODAY"-"$i
+fi
+
+mv $REPO_DIR$DEL_REPO $REPO_BAK_DIR$DEL_REPO$TODAY
+

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo -e "usage:\n" \
+        "ls\n" \
+        "init <name>\n" \
+        "rm   <name>\n" \
+        "help\n"
