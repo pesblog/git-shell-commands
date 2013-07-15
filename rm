@@ -5,24 +5,24 @@ if [ $# -ne 1 ];then
   exit 1
 fi
 
-REPO_DIR=$HOME"/git/"
-DEL_REPO=$1
-[[ ! $REPO_DIR$DEL_REPO =~ \.git$ ]] && DEL_REPO=$DEL_REPO".git"
-if [[ ! -d $REPO_DIR$DEL_REPO ]];then
-  echo "$DEL_REPO is not exists"
+repoDir=$HOME"/git/"
+target=$1
+[[ $repoDir$target =~ \.git$ ]] || target=$target".git"
+if [[ ! -d $repoDir$target ]];then
+  echo "$target is not exists"
   exit 1
 fi
 
-REPO_BAK_DIR=$HOME"/git.bak/"
-TODAY=`date "+-%Y-%m-%d"`
-if [[ -d $REPO_BAK_DIR$DEL_REPO$TODAY ]];then
+backupDir=$HOME"/git.bak/"
+today=`date "+-%Y-%m-%d"`
+if [[ -d $backupDir$target$today ]];then
   i=1
-  while [ -d $REPO_BAK_DIR$DEL_REPO$TODAY"-"$i ]
+  while [ -d $backupDir$target$today"-"$i ]
   do
     i=`expr "$i" + 1`
   done
-  TODAY=$TODAY"-"$i
+  today=$today"-"$i
 fi
 
-mv $REPO_DIR$DEL_REPO $REPO_BAK_DIR$DEL_REPO$TODAY
+mv $repoDir$target $backupDir$target$today
 

@@ -5,18 +5,18 @@ if [ $# -ne 1 ]; then
   exit 1
 fi
 
-REPOSITORY_DIR=$HOME"/git/"
-NEW_REPOSITORY=$REPOSITORY_DIR$1
+repoDir=$HOME"/git/"
+newRepo=$repoDir$1
 
-if [[ ! $NEW_REPOSITORY =~ \.git$ ]]; then
-  NEW_REPOSITORY="$NEW_REPOSITORY"".git"
+if [[ ! $newRepo =~ \.git$ ]]; then
+  newRepo="$newRepo"".git"
 fi
 
-if [[ -d $NEW_REPOSITORY ]]; then
-  echo "$NEW_REPOSITORY is exists"
+if [[ -d $newRepo ]]; then
+  echo "$newRepo is exists"
   exit 1
 fi
 
-mkdir $NEW_REPOSITORY
-git init --bare --shared $NEW_REPOSITORY
+mkdir $newRepo
+git init --bare --shared $newRepo
 
